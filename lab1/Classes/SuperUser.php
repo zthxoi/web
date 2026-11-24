@@ -1,22 +1,28 @@
 <?php
 declare(strict_types=1);
+
 namespace MyProject\Classes;
-require_once __DIR__ . '/User.php';
-require_once __DIR__ . '/SuperUserInterface.php';
-class SuperUser extends User implements SuperUserInterface {
+
+class SuperUser extends User implements SuperUserInterface
+{
     public string $role;
     public static int $superUserCount = 0;
-    public function __construct(string $name, string $login, string $password, string $role) {
+
+    public function __construct(string $name, string $login, string $password, string $role)
+    {
         parent::__construct($name, $login, $password);
         $this->role = $role;
         self::$superUserCount++;
     }
-    public function showInfo(): void {
-        parent::showInfo(); 
-        echo "🛡️ Роль: " . $this->role . "<br>";
-        echo "<hr>";
+
+    public function showInfo(): void
+    {
+        parent::showInfo();
+        echo "<p><strong>Роль:</strong> {$this->role}</p>\n";
     }
-    public function getInfo(): array {
+
+    public function getInfo(): array
+    {
         return [
             'name'  => $this->name,
             'login' => $this->login,

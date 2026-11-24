@@ -5,7 +5,13 @@ use MyProject\Classes\User;
 use MyProject\Classes\SuperUser;
 
 spl_autoload_register(function (string $className): void {
-    $file = __DIR__ . '/' . str_replace('\\', '/', $className) . '.php';
+    $relativePath = str_replace('\\', '/', $className) . '.php';
+    $file = __DIR__ . '/' . $relativePath;
+
+    if (!file_exists($file)) {
+        $file = __DIR__ . '/' . str_replace('MyProject/', '', $relativePath);
+    }
+
     if (file_exists($file)) {
         require_once $file;
     }

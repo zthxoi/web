@@ -36,6 +36,13 @@ declare(strict_types=1);
                 <li><a href="lab2/mvc.png">Диаграмма классов: MVC</a></li>
             </ul>
         </li>
+        <li>
+             <strong>Лабораторная работа №3: ООП и SQLite</strong>
+             <ul>
+                 <li><a href="lab3/news/news.php">Новостная лента (news.php)</a></li>
+                 <li><a href="lab3/news/news.png">Диаграмма классов (SQLite)</a></li>
+             </ul>
+         </li>
     </ul>
 </body>
 </html>

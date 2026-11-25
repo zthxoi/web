@@ -1,0 +1,41 @@
+@startuml
+interface INewsDB {
+    + saveNews(title, category, description, source): bool
+    + getNews(): array|false
+    + deleteNews(id): bool
+}
+
+interface IteratorAggregate <<SPL>> {
+    + getIterator(): Traversable
+}
+
+class ArrayIterator <<SPL>>
+class SQLite3 <<built-in>>
+class DOMDocument <<built-in>>
+
+class NewsDB {
+    + {static} DB_NAME: string = "news.db"
+    + {static} RSS_NAME: string = "rss.xml"
+    + {static} RSS_TITLE: string = "Последние новости"
+    + {static} RSS_LINK: string
+    - _db: ?SQLite3
+    - items: array
+    + __construct()
+    + __destruct()
+    - getCategories(): void
+    + getIterator(): ArrayIterator
+    # getDb(): ?SQLite3
+    + clearStr(data: string): string
+    + clearInt(data: int): int
+    + saveNews(title, category, description, source): bool
+    + getNews(): array|false
+    + deleteNews(id): bool
+    + createRss(): void
+}
+
+INewsDB <|.. NewsDB
+IteratorAggregate <|.. NewsDB
+NewsDB *-- SQLite3
+NewsDB ..> ArrayIterator : creates
+NewsDB ..> DOMDocument : uses
+@enduml

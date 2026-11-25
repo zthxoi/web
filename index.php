@@ -43,6 +43,15 @@ declare(strict_types=1);
                  <li><a href="lab3/news/news.png">Диаграмма классов (SQLite)</a></li>
              </ul>
          </li>
+        <li>
+            <strong>Лабораторная работа №4: Standard PHP Library (SPL)</strong>
+            <ul>
+                <li><a href="lab4/numbers_squared.php">Итератор NumbersSquared (numbers_squared.php)</a></li>
+                <li><a href="lab4/news/news.php">Новостная лента с IteratorAggregate (news.php)</a></li>
+                <li><a href="lab4/numbers_squared.png">Диаграмма классов: NumbersSquared</a></li>
+                <li><a href="lab4/news/news_spl.png">Диаграмма классов: NewsDB + SPL</a></li>
+            </ul>
+        </li>
     </ul>
 </body>
 </html>

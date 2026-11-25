@@ -19,7 +19,7 @@ if (isset($_GET['del'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новостная лента (SPL)</title>
+    <title>Новостная лента (XML / RSS)</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; line-height: 1.5; }
         .error { color: #b00020; font-weight: bold; }
@@ -32,6 +32,7 @@ if (isset($_GET['del'])) {
 </head>
 <body>
     <h1>Последние новости</h1>
+    <p><a href="rss.xml" target="_blank">Открыть RSS-ленту (rss.xml)</a></p>
     <?php
     if ($errMsg !== '') {
         echo '<p class="error">' . htmlspecialchars($errMsg) . '</p>';
@@ -60,7 +61,7 @@ if (isset($_GET['del'])) {
     ?>
     <section class="uml-block">
         <h2>Диаграмма классов</h2>
-        <img src="news_spl.png" alt="Диаграмма классов новостной ленты с SPL">
+        <img src="news_rss.png" alt="Диаграмма классов новостной ленты с RSS">
     </section>
 </body>
 </html>

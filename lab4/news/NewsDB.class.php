@@ -4,9 +4,9 @@ declare(strict_types=1);
 require_once __DIR__ . '/INewsDB.class.php';
 
 /**
- * Класс для работы с новостной лентой на базе SQLite3.
+ * Класс для работы с новостной лентой на базе SQLite3 с поддержкой итерации категорий.
  */
-class NewsDB implements INewsDB
+class NewsDB implements INewsDB, IteratorAggregate
 {
     /** Имя файла базы данных */
     public const DB_NAME = 'news.db';
@@ -14,8 +14,11 @@ class NewsDB implements INewsDB
     /** @var SQLite3|null Экземпляр подключения к SQLite3 */
     private ?SQLite3 $_db = null;
 
+    /** @var array<int, string> Список категорий новостей (id => name) */
+    private array $items = [];
+
     /**
-     * Конструктор: открывает БД или создаёт её с таблицами, если файла ещё нет.
+     * Конструктор: открывает БД (или создаёт её) и загружает список категорий.
      */
     public function __construct()
     {
@@ -54,6 +57,8 @@ class NewsDB implements INewsDB
             $this->_db->exec($sqlCreateCategory);
             $this->_db->exec($sqlInsertCategory);
         }
+
+        $this->getCategories();
     }
 
     /**
@@ -65,6 +70,33 @@ class NewsDB implements INewsDB
             $this->_db->close();
             unset($this->_db);
         }
+    }
+
+    /**
+     * Загружает категории из таблицы category в свойство $items.
+     *
+     * @return void
+     */
+    private function getCategories(): void
+    {
+        $sql = "SELECT id, name FROM category";
+        $result = $this->_db->query($sql);
+
+        if ($result !== false) {
+            while ($row = $result->fetchArray(SQLITE3_ASSOC)) {
+                $this->items[(int) $row['id']] = (string) $row['name'];
+            }
+        }
+    }
+
+    /**
+     * Возвращает итератор по списку категорий новостей.
+     *
+     * @return ArrayIterator
+     */
+    public function getIterator(): ArrayIterator
+    {
+        return new ArrayIterator($this->items);
     }
 
     /**

@@ -47,3 +47,4 @@ jobs:
             **/.env.*
             **/README*
             **/news.db
+            **/rss.xml

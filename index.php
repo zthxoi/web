@@ -52,6 +52,14 @@ declare(strict_types=1);
                 <li><a href="lab4/news/news_spl.png">Диаграмма классов: NewsDB + SPL</a></li>
             </ul>
         </li>
+        <li>
+             <strong>Лабораторная работа №5: Обработка XML (RSS)</strong>
+             <ul>
+                 <li><a href="lab5/news/news.php">Новостная лента с генерацией RSS (news.php)</a></li>
+                 <li><a href="lab5/news/rss.xml">Сгенерированный RSS-файл (rss.xml)</a></li>
+                 <li><a href="lab5/news/news_rss.png">Диаграмма классов: NewsDB + DOMDocument</a></li>
+             </ul>
+         </li>
     </ul>
 </body>
 </html>

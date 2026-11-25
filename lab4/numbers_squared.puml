@@ -1,0 +1,23 @@
+@startuml
+interface Iterator <<SPL>> {
+    + current(): mixed
+    + key(): mixed
+    + next(): void
+    + rewind(): void
+    + valid(): bool
+}
+
+class NumbersSquared {
+    - start: int
+    - end: int
+    - current: int
+    + __construct(start: int, end: int)
+    + rewind(): void
+    + valid(): bool
+    + next(): void
+    + key(): int
+    + current(): int
+}
+
+Iterator <|.. NumbersSquared
+@enduml

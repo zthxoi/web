@@ -19,7 +19,7 @@ if (isset($_GET['del'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новостная лента</title>
+    <title>Новостная лента (SPL)</title>
     <style>
         body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; padding: 0 15px; line-height: 1.5; }
         .error { color: #b00020; font-weight: bold; }
@@ -42,9 +42,9 @@ if (isset($_GET['del'])) {
         <input type="text" name="title"><br>
         Выберите категорию:<br>
         <select name="category">
-            <option value="1">Политика</option>
-            <option value="2">Культура</option>
-            <option value="3">Спорт</option>
+            <?php foreach ($news as $id => $name): ?>
+                <option value="<?= (int) $id ?>"><?= htmlspecialchars((string) $name) ?></option>
+            <?php endforeach; ?>
         </select>
         <br>
         Текст новости:<br>
@@ -60,7 +60,7 @@ if (isset($_GET['del'])) {
     ?>
     <section class="uml-block">
         <h2>Диаграмма классов</h2>
-        <img src="news.png" alt="Диаграмма классов новостной ленты">
+        <img src="news_spl.png" alt="Диаграмма классов новостной ленты с SPL">
     </section>
 </body>
 </html>
